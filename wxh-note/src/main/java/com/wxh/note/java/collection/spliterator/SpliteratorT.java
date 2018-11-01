@@ -1,10 +1,10 @@
 package com.wxh.note.java.collection.spliterator;
 
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * 
@@ -29,14 +29,13 @@ public class SpliteratorT {
 	public static int countWordsIteratively(String s) {
 		int counter = 0;
 		boolean lastSpace = true;
-		for(char c : s.toCharArray()) {
-			if(Character.isWhitespace(c)) {
+		for(char c : s.toCharArray())
+			if (Character.isWhitespace(c)) {
 				lastSpace = true;
 			} else {
-				if(lastSpace) counter++;
+				if (lastSpace) counter++;
 				lastSpace = false;
 			}
-		}
 		return counter;
 	}
 	
