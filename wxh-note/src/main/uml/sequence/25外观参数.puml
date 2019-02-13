@@ -1,0 +1,35 @@
+#外观参数 (skinparam)
+
+使用 skinparam 命令改变颜色和字体。
+如下场景可以使用这一命令:
+• 在图示定义中,
+• 在一个包含文件中,
+• 在由命令行或者 ANT 任务提供的配置文件中。
+ 你也可以修改其他渲染元素,如以下示例:
+
+@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+skinparam sequenceParticipant underline
+
+
+actor User
+participant "First Class" as A
+participant "Second Class" as B
+participant "Last Class" as C
+User -> A: DoWork
+activate A
+A -> B: Create Request
+activate B
+B -> C: DoWork
+activate C
+C --> B: WorkDone
+
+destroy C
+B --> A: Request Created
+deactivate B
+A --> User: Done
+deactivate A
+
+@enduml

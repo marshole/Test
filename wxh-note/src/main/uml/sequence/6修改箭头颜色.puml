@@ -1,0 +1,11 @@
+#修改箭头颜色(Change arrow color)
+
+你可以用以下记号修改箭头的颜色:
+
+@startuml
+
+a -[#red]> b : red arrow
+
+b --[#0000FF]> a : blue arrow
+
+@enduml

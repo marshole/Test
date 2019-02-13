@@ -1,0 +1,10 @@
+#在参与者中使用非字母符号(Use non-letters in participants)
+
+你可以使用引号定义参与者,还可以用关键字 as 给参与者定义别名。
+
+@startuml
+Alice -> "Bob()": Hello
+"Bob()" -> "This is very\nlong" as long
+'注释
+long --> "Bob()": ok
+@enduml

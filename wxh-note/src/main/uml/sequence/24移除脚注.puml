@@ -1,0 +1,16 @@
+#移除脚注
+
+使用 hide footbox 关键字移除脚注。
+
+@startuml
+
+hide footbox
+
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+
+
+@enduml

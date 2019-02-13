@@ -1,0 +1,17 @@
+#延迟
+
+你可以使用... 来表示延迟,并且还可以给延迟添加注释。
+
+@startuml
+
+Alice -> Bob : Hello
+
+...
+
+Bob --> Alice : Ok
+
+... 5 minutes latter ...
+
+Bob --> Alice : Bye
+
+@enduml

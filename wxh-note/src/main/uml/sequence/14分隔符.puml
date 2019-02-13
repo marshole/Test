@@ -1,0 +1,17 @@
+#分隔符
+
+你可以通过使用 == 关键词来将你的图表分割多个步骤。
+
+
+@startuml
+
+== Initialization ==
+
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+
+== Repetition ==
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+@enduml

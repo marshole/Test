@@ -1,0 +1,18 @@
+#对消息序列编号(Message sequence numbering)
+
+关键字 autonumber 用于自动对消息编号。
+
+@startuml
+autonumber
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+autonumber 15
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+
+autonumber 40 10
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+
+@enduml

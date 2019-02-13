@@ -1,0 +1,14 @@
+#更多标题信息
+
+你可以在标题中使用 creole 格式。
+
+@startuml
+
+title __Simple__ **communication** example \nII
+
+
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+
+@enduml

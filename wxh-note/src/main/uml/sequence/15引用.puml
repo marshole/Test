@@ -1,0 +1,21 @@
+#引用
+
+你可以在图中通过使用 ref over 关键词来实现引用
+
+@startuml
+
+participant Alice
+actor Bob
+
+ref over Alice,Bob : int
+
+Alice -> Bob : Hello
+
+ref over Bob
+
+This can be on several lines
+
+end ref
+
+
+@enduml
