@@ -1,0 +1,15 @@
+#类之间的关系
+
+类之间的关系通过下面的符号定义:
+继承（extension）    <|--
+组合（composition）  *--
+聚合（aggregation）  o--
+使用”..” 来代替”--” 可以得到点线. 在这些规则下,也可以绘制下列图形
+
+@startuml
+
+Class01 "1" *-- "many" Class02 : contains Class03
+o-- Class04 : aggregation
+Class05 --> "1" Class06
+
+@enduml
