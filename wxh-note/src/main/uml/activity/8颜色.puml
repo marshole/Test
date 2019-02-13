@@ -1,0 +1,16 @@
+#颜色
+
+你可以为活动 (activity) 指定一种颜色。
+
+@startuml
+start
+
+:starting progress;
+
+#HotPink:reading configuration files
+These files should edited at this point!;
+
+#AAAAAA:ending of the process;
+
+stop
+@enduml

@@ -1,0 +1,62 @@
+#一个完整的例子
+
+@startuml
+
+start
+
+:ClickServlet.handleRequest();
+
+:new page;
+
+    if(Page.onSecurityCheck) then (true)
+
+        :Page.onInit();
+
+        if(isForward?) then (no)
+
+            :Precess controls;
+
+            if(continue processing?) then
+
+                if(isPost?) then (yes)
+                    :Page.onPost();
+
+                    else (no)
+                        :Page.onGet;
+
+                endif
+
+                :Page.onRender();
+
+                else (no)
+
+                    stop
+
+            endif
+
+        endif
+
+        else (false)
+
+    endif
+
+    if(do redirect?) then (yes)
+
+        :redirect process;
+
+        else
+
+            if(do forward?) then (yes)
+
+                :Forward request;
+
+                else(no)
+
+                    :Render page template;
+
+            endif
+
+    endif
+
+
+@enduml

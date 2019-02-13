@@ -1,0 +1,17 @@
+#条件语句
+
+在图示中可以使用关键字 if,then 和 else 设置分支测试。标注文字则放在括号中。
+
+@startuml
+
+start
+
+if (x>3?) then (yes)
+:x = 5;
+else(no)
+:x = 0;
+endif
+
+stop
+
+@enduml

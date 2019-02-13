@@ -1,0 +1,23 @@
+#while 循环
+
+可以使用关键字 while 和 end while 进行 while 循环。
+
+@startuml
+start
+
+:i = 0,j = 0;
+
+while (i < 10 ?)
+
+:i++;
+
+:j=j+2;
+
+endwhile
+
+:print j;
+
+
+
+stop
+@enduml

@@ -1,0 +1,15 @@
+#开始/结束
+
+你可以使用关键字 start 和 stop 表示图示的开始和结束。
+
+@startuml
+
+start
+
+:Hellow world;
+
+:This is on defined on
+several **lines**;
+
+stop
+@enduml

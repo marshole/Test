@@ -1,0 +1,23 @@
+#并行处理
+
+你可以使用关键字 fork,fork again 和 end fork 表示并行处理。
+
+
+@startuml
+start
+
+if (进行并行处理 ?) then (yes)
+
+fork
+:执行任务1;
+fork again
+:执行任务2;
+end fork
+
+else (no)
+:执行任务1;
+:执行任务2;
+endif
+
+stop
+@enduml

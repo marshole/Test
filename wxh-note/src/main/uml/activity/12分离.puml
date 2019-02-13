@@ -1,0 +1,37 @@
+#分离
+
+可以使用关键字 detach 移除箭头。
+
+
+@startuml
+
+start
+
+fork
+
+:foo1;
+
+:foo2;
+
+fork again
+:foo3;
+detach
+
+end fork
+
+if (foo4) then
+
+:foo5;
+
+endif
+
+detach
+:foo6;
+
+detach
+
+:foo7;
+
+stop
+
+@enduml

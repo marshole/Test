@@ -1,0 +1,22 @@
+#组合
+
+通过定义分区 (partition),你可以把多个活动组合 (group) 在一起。
+
+@startuml
+start
+
+partition initialization {
+
+    :foo1;
+
+    :foo2;
+}
+
+
+group running
+:foo3;
+
+:foo4;
+}
+stop
+@enduml

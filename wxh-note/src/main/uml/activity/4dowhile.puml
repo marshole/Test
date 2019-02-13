@@ -1,0 +1,17 @@
+#重复循环(do while)
+
+你可以使用关键字 repeat 和 repeatwhile 进行重复循环。
+
+@startuml
+start
+
+:i = 0;
+
+repeat
+
+:i++;
+
+repeat while (i <= 10 ?)
+
+stop
+@enduml

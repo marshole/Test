@@ -1,0 +1,32 @@
+#箭头
+
+使用 -> 标记,你可以给箭头添加文字或者修改箭头颜色。
+同时,你也可以选择点状 (dotted),条状 (dashed),加粗或者是隐式箭头
+
+@startuml
+
+start
+
+:foo1;
+-> 可以在箭头添加文本;
+
+if (test) then
+
+-[#blue]->;
+
+:foo2;
+-[#green,dashed]->The text can
+also be on several lines
+and **very** long...;
+:foo3;
+else
+-[#gray,dotted]->;
+:foo4;
+
+endif
+
+-[#yellow]->;
+
+stop
+
+@enduml
