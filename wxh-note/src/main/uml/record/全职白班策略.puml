@@ -1,0 +1,26 @@
+#
+
+@startuml
+
+title 累计考勤工时计算
+
+start
+
+:getCurrentMonthWorkHours;
+
+floating note left: 通过StateQueryServiceImpl.getCollectOfMonth \n 获取当月累计工时
+
+:getLastMonthWorkHours;
+
+floating note right: 通过StateQueryServiceImpl.getCollectOfMonth \n 获取上月累计工时
+
+:getLastMonthBeforeWorkHours;
+
+floating note left: 通过attendance_staff_month \n 获取上月之前累计工时
+
+:sumWorkHours;
+
+floating note right: 求和
+
+stop
+@enduml

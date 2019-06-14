@@ -1,0 +1,44 @@
+#对调审批通过执行时序图
+
+@startuml
+
+title 对调审批通过执行时序图
+
+
+participant "applyFlow" as applyFlow
+participant "exchangeBiz" as exchangeBiz
+participant "ManagerValidator" as validator
+participant "StrongValidator" as StrongValidator
+
+
+    applyFlow -->  exchangeBiz : 执行对调
+
+    activate exchangeBiz
+
+
+        exchangeBiz --> validator : 校验
+        activate validator
+            validator --> validator : 参数校验
+            validator --> validator : 权限校验
+            validator --> StrongValidator : 强业务校验
+            activate StrongValidator
+               StrongValidator --> StrongValidator : 班次变动乐观锁校验
+               StrongValidator --> StrongValidator : 现有强校验逻辑
+               StrongValidator --> validator : 返回校验结果
+            deactivate StrongValidator
+            validator --> exchangeBiz : 返回校验结果
+
+            alt 校验通过
+            exchangeBiz --> exchangeBiz:执行对调
+
+            end
+
+        deactivate validator
+
+    exchangeBiz --> applyFlow : 返回结果
+
+    deactivate exchangeBiz
+
+
+
+@enduml

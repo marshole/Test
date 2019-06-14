@@ -1,0 +1,41 @@
+#ehr师徒制-选店名额时序图
+
+@startuml
+
+title 选店名额时序图
+
+actor User
+participant "ehr" as ehr
+participant "mysql" as db
+participant "ipes-log" as es
+
+group 查询人员选店名额列表
+User -> ehr : 查询人员选店名额列表
+activate ehr
+ehr --> User : 返回人员选店名额列表
+deactivate ehr
+end
+
+group 变更选店名额
+User -> ehr : 变更选店名额
+activate ehr
+ehr  -> db
+ehr  -> es : 记录变更日志
+ehr --> User: 返回变更结果
+deactivate ehr
+end
+
+group 查询变更记录
+User -> ehr : 查询变更记录
+activate ehr
+ehr -> es : 查询变更记录
+activate es
+es --> ehr : 返回变更记录
+deactivate es
+ehr --> User : 返回变更记录
+deactivate ehr
+end
+
+
+@enduml
+

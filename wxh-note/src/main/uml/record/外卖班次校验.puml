@@ -1,0 +1,28 @@
+#班次对调-培训班次校验规则链
+
+       @startuml
+
+       title 通用培训班次校验规则链
+
+       start
+
+       if(通用培训班次校验)then(pass)
+           if(训练员与学员班次时间范围内校验)then(pass)
+               if(训练员与学员班次工时比例检验)then(pass)
+                   if(训练员与学员班次个数比例校验)then(pass)
+                       :success;
+                   else(fail)
+                       :fail;
+                   endif
+               else(fail)
+                   :fail;
+               endif
+           else(fail)
+               :fail;
+           endif
+       else(fail)
+           :fail;
+       endif
+
+       stop
+       @enduml

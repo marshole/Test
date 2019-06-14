@@ -1,0 +1,42 @@
+@startuml
+
+participant "排班系统" as roster
+database "数据库" as db
+participant "蜂报" as beeReport
+
+actor "用户" as user
+
+
+group 排班系统
+
+roster -> db : 查询信息
+
+activate roster
+
+db --> roster : 返回
+
+
+roster --> roster : 统计工时
+
+
+roster -> db : 将工时统计入库
+
+deactivate roster
+
+end
+
+group 蜂报
+
+beeReport -> db : 查询异常工时
+
+activate beeReport
+
+db --> beeReport : 返回
+
+
+beeReport --> user : 发送给用户
+
+deactivate beeReport
+
+end
+@enduml

@@ -1,0 +1,38 @@
+#在店状态调整时序图
+
+       @startuml
+
+       title 在店状态调整时序图
+
+       actor User
+       participant roster
+       participant ehr
+
+
+           User -> roster : 发起调整在店状态
+           activate roster
+
+               roster --> roster : 查询是否已经离职
+
+               alt 离职
+
+               roster --> User: 离职不能发起
+
+               else 在职
+
+               roster --> ehr : 查询是否在申请离职
+                   activate ehr
+                   ehr --> roster: 返回结果
+                   deactivate ehr
+
+                       alt 离职申请中
+                           roster --> User: 申请离职中不能发起
+                       else 不在申请中
+                           roster --> User: 成功
+                       end
+               end
+
+               roster --> User : 返回人员选店名额列表
+
+           deactivate roster
+       @enduml

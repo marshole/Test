@@ -1,0 +1,47 @@
+#ehr巴赫门店数据拉取同步定时
+
+@startuml
+start
+partition 遍历门店 {
+:getShop;
+floating note left: 获取一个门店
+
+:getOwner;
+floating note right: 获取门店的所有人
+if(owner is null) then(yes)
+else(no)
+
+:getZoneManager;
+
+floating note right: 获取门店的战区经理
+
+
+partition 设置门店代管直管逻辑 {
+
+if (owner is zoneManager ？) then (yes)
+:set 直管;
+else(no)
+:set 代管;
+endif
+}
+
+partition 设置门店所有人异常逻辑 {
+
+if (owner is dimission ？) then (yes)
+:set 所有人离职;
+else(no)
+
+    if (owner 向上的汇报线无门店战区经理 ？) then (yes)
+    :set 非同战区;
+    else(no)
+    :set 无异常;
+    endif
+
+endif
+}
+endif
+
+
+}
+stop
+@enduml
