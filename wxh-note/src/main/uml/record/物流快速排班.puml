@@ -1,0 +1,33 @@
+
+@startuml
+
+actor User
+participant rosterSystem as roster
+participant dataBase as db
+
+User -> roster : 发起复制上周班表
+ activate roster
+ roster -> roster: 参数校验
+
+        alt 参数校验通过
+            roster --> db :  执行入库
+        else 参数校验不通过
+            roster --> User: 提示
+        end
+
+ deactivate roster
+
+
+ User -> roster : 发起手动批量排班
+  activate roster
+  roster -> roster: 参数校验
+
+         alt 参数校验通过
+             roster --> db :  执行入库
+         else 参数校验不通过
+             roster --> User: 提示
+         end
+
+  deactivate roster
+
+@enduml

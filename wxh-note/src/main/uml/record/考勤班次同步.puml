@@ -1,0 +1,19 @@
+#条件语句
+
+
+@startuml
+
+start
+
+:开始同步班次;
+:获取班次;
+
+if (物流班次?) then (yes)
+:添加到新班次源;
+else(no)
+:延用现有逻辑;
+endif
+
+stop
+
+@enduml

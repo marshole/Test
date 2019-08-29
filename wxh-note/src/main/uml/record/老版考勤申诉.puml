@@ -1,0 +1,23 @@
+
+@startuml
+
+                     actor User
+                     participant AbnormalAttendanceController as abnormal
+                     participant WorkflowController as workflow
+
+
+                         User -> abnormal : /api/abnormal/attendance/v1 进入考勤申诉页面
+                         activate abnormal
+                         abnormal --> User : 返回详情
+                         deactivate abnormal
+
+                         User -> abnormal : /api/abnormal/state/status/v1 调整考勤
+                         activate abnormal
+                         abnormal --> User : 返回详情
+                         deactivate abnormal
+
+                         User -> workflow : /api/workflow/start/{workflowType}/v1 发起申诉
+                         activate workflow
+                         workflow --> User : 返回
+                         deactivate workflow
+                     @enduml

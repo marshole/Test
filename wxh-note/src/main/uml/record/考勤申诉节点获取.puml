@@ -1,0 +1,12 @@
+@startuml
+
+ participant attendance as att
+ participant shopSupport as support
+ participant UserService as oa
+
+    att -> support : 获取门店店长
+    support --> att : 返回
+    att -> uc : 查询店长信息
+    uc --> att : 返回
+
+@enduml

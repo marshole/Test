@@ -1,0 +1,5 @@
+@startuml 排班
+package "用户信息" {
+  [usercenter]
+}
+@enduml
