@@ -1,0 +1,3 @@
+[submodule "common-java"]
+	path = common-java
+	url = git@github.com:firebat/common-java.git
