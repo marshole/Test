@@ -1,0 +1,32 @@
+#打卡人脸识别超时降级
+
+@startuml
+
+title 人脸识别超时降级
+
+actor User
+participant "controller" as controller
+participant "faceBiz" as faceBiz
+participant "punchBIz" as punchBIz
+
+User -> controller : 提交打卡申请
+activate controller
+    controller -> faceBiz : 返回人员选店名额列表
+    activate faceBiz
+    faceBiz -> faceBiz : 人脸识别
+        activate faceBiz
+            faceBiz --> faceBiz: 人脸识别超时检测，并返回人脸识别结果
+
+         deactivate faceBiz
+
+        faceBiz --> controller: 返回人脸识别结果
+    deactivate faceBiz
+
+    controller -> punchBIz :根据人脸识别结果打卡
+    activate punchBIz
+        punchBIz -> controller:返回打卡结果
+    deactivate punchBIz
+    controller -> User : 返回打卡结果
+deactivate controller
+@enduml
+

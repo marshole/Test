@@ -1,0 +1,20 @@
+#ehr巴赫门店数据拉取同步定时
+
+@startuml
+start
+:获取影响排班 workShift;
+:调整 workShift;
+floating note left: 将班次的类型调整为请假
+:获取影响班次的打卡记录 workPunch;
+
+
+if(workPunch 是否完结) then(yes)
+floating note right: 上班和下班均为未打卡或者旷工视为未完结
+:执行重新匹配逻辑;
+floating note left: 重新匹配逻辑与"排班覆盖请假"的匹配逻辑一致
+else(no)
+:不执行重新匹配逻辑，并且将workPunch删除;
+endif
+
+stop
+@enduml

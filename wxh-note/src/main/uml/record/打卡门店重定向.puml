@@ -1,0 +1,27 @@
+#打卡门店重定向
+
+       @startuml
+
+       title 打卡门店重定向
+
+       start
+
+       :打卡通过人脸识别;
+
+       :获取表单中的设备Udid;
+
+       if(udid is null)then(no)
+           :根据udid查询设备;
+           if(没有查到设备)then(no)
+               if(表单中的门店与设备绑定门店是否一致)then(no)
+                   :将表单中的门店替换为设备绑定门店;
+                   :添加报警;
+               else(yes)
+               endif
+           else(yes)
+           endif
+       else(yes)
+       endif
+
+       stop
+       @enduml

@@ -1,0 +1,19 @@
+
+
+       @startuml
+
+       title 店长节点兼容方案
+
+       start
+
+       :流转进入店长节点;
+
+       :获取工作流信息;
+
+       if(新版本异常考勤工作流)then(yes)
+           :采用系统节点的流转逻辑;
+       else(no)
+           :采用原有店长节点流转逻辑;
+       endif
+       stop
+       @enduml
