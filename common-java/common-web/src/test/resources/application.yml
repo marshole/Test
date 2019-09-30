@@ -1,0 +1,18 @@
+spring:
+  appliction:
+    name: common-web-test
+
+  profiles:
+    active: test
+
+  main:
+    banner-mode: "off"
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    org.springframework.test: WARN
+---
+spring:
+  profiles: test
+

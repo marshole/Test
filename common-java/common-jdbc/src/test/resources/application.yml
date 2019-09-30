@@ -1,0 +1,18 @@
+spring:
+  appliction:
+    name: common-jdbc-test
+
+  profiles:
+    active: test
+
+  main:
+    banner-mode: "off"
+
+logging:
+  level:
+    org.springframework.test: WARN
+
+---
+spring:
+  profiles: test
+
