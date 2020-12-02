@@ -1,0 +1,32 @@
+#中分类销量预测同步逻辑
+
+       @startuml
+
+       title 制作量预测同步逻辑
+
+
+       participant "produceForecastJob" as job
+       participant "produceForecastBiz" as biz
+       participant "produceForecastService" as service
+       participant "produceForecastRemote" as remote
+       participant "db" as db
+
+           job --> job  : 根据门店分片
+           note left : 分片逻辑参考现有中分类销量预测同步逻辑
+           job -->  biz : 同步非日配销量预测
+           activate biz
+               biz --> service : 同步制作量预测
+                   activate service
+                       service --> remote : 从销量计划系统查询制作量预测
+                       activate remote
+                       remote --> service : 返回
+                       deactivate remote
+                       service --> service : 过滤需要的预测数据，并转为人效内部编码
+                       note left : 编码映射逻辑参考下方
+                       service --> db : 入库
+                       service --> biz
+                   deactivate service
+               biz --> job
+           deactivate biz
+
+       @enduml

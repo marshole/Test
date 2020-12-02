@@ -1,0 +1,17 @@
+#条件语句
+
+
+@startuml
+
+start
+
+:基础校验;
+:逻辑删除（修改isDelete字段）;
+:清空员工的入离店日期;
+:调整可排班字段（修改isOnShop）;
+:情况absent数据;
+:删除未来排班数据;
+
+stop
+
+@enduml

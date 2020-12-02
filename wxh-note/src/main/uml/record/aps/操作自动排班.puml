@@ -1,0 +1,26 @@
+
+@startuml
+
+actor User
+participant schedulerController as controller
+participant schedulerService as service
+
+
+note left of controller
+运营选择排程器和待排门店列表
+end note
+User -> controller : 执行自动排班
+
+activate controller
+
+note left of service
+等待定时任务执行
+end note
+controller -> service:  插入待排队列
+activate service
+   service -> controller :返回
+deactivate service
+
+controller --> User : 返回
+deactivate controller
+@enduml

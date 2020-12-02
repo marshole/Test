@@ -1,0 +1,20 @@
+
+@startuml
+
+participant support系统 as support
+participant 设备管理系统 as dm
+
+
+support -> support : 启动定时，遍历离建店T-2的门店
+
+    support -> dm: 查询门店建店设备
+        activate dm
+        dm -> support: 返回
+        deactivate dm
+
+support -> support : 增量更新设备SPU
+
+support -> support : 记录门店建店设备
+
+
+@enduml

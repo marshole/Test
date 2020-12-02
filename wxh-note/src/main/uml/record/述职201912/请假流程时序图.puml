@@ -1,0 +1,28 @@
+
+@startuml
+
+actor user
+participant 考勤系统 as attend
+participant 工作流 as wf
+participant 排班系统 as roster
+
+
+
+user -> attend : 同意某个员工的请假申请
+    activate attend
+            attend -> wf : 发送到工作流
+                activate wf
+                 wf -> attend : 返回结果
+                deactivate wf
+            attend -->  roster : 同步给排班系统
+
+            group
+			attend ->  attend : 处理与请假存在交集的考勤数据
+            note right of attend
+            线下存在，员工请完假,
+            又来上班的场景。
+            end note
+            end group
+            attend -> user
+    deactivate attend
+@enduml

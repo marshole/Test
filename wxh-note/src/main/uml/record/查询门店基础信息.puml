@@ -1,0 +1,27 @@
+
+@startuml
+
+actor User
+participant shopController as controller
+participant shopQueryBiz as biz
+participant gradeAPI as api
+
+User -> controller : 查询门店基础信息
+activate controller
+
+controller -> biz:  查询门店基础信息
+activate biz
+   biz -> biz: 查询门店信息
+   biz -> biz: 查询门店设备信息
+   biz -> biz: 查询门店标签信息
+   biz -> api: 查询门店工作总量
+   activate api
+   api -> biz: 返回
+   deactivate api
+   biz -> biz: 根据查询条件过滤门店
+   biz -> controller :返回
+deactivate biz
+
+controller --> User : 返回
+deactivate controller
+@enduml

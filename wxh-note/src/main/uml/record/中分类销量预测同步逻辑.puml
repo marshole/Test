@@ -1,0 +1,42 @@
+#中分类销量预测同步逻辑
+
+@startuml
+
+title 中分类销量预测同步逻辑
+
+
+participant "divisionForecastJob" as job
+participant "divisionModifyBiz" as biz
+participant "divisionModifyService" as service
+participant "saleForecastRemote" as remote
+participant "db" as db
+
+    job -->  biz : 同步非日配销量预测
+    activate biz
+        biz --> service : 同步非日配销量预测
+            activate service
+                service --> remote : 从销量预测系统查询非日配销量预测
+                activate remote
+                remote --> service : 返回
+                deactivate remote
+                service --> db : 入库
+                service --> biz
+            deactivate service
+        biz --> job
+    deactivate biz
+
+    job -->  biz : 同步中分类预测
+    activate biz
+        biz --> service : 同步中分类预测
+            activate service
+                service --> remote : 从销量预测系统查询中分类预测
+                activate remote
+                remote --> service : 返回
+                deactivate remote
+                service --> db : 入库
+                service --> biz
+            deactivate service
+        biz --> job
+    deactivate biz
+
+@enduml

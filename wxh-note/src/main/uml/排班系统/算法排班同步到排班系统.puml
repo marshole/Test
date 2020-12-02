@@ -1,0 +1,36 @@
+@startuml
+
+participant aps as aps
+participant roster as roster
+database rosterDB as db
+
+
+activate aps
+
+aps -> aps : 算法排班
+aps -> db : 落地算法排班结果
+note right of aps
+正常班次（有人的班次）
+    落到auto_roster_detail
+失败班次（没人的班次）
+    落到auto_roster_detail_fail
+然后再落一条排班计划到auto_plan
+end note
+
+aps --> roster : 推送mq,auto_plan_id
+
+deactivate aps
+
+
+activate roster
+
+roster -> roster : 收到aps推送消息
+
+
+roster -> db : 查询auto_plan
+
+roster -> roster : 发布auto_plan
+
+deactivate roster
+
+@enduml

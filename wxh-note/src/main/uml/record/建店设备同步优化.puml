@@ -1,0 +1,17 @@
+
+@startuml
+
+participant 门店巴赫信息变更listener as listener
+participant 门店信息变更biz as shopBiz
+participant 建店设备biz as shopBuildDeviceBiz
+
+listener -> shopBiz : 监听到门店信息变更信息，并尝试更新
+activate shopBiz
+shopBiz -> shopBuildDeviceBiz : 尝试同步建店设备
+    activate shopBuildDeviceBiz
+    shopBuildDeviceBiz -> shopBiz : 返回
+    deactivate shopBuildDeviceBiz
+shopBiz -> shopBiz : 更新门店信息
+shopBiz --> listener : 返回
+deactivate shopBiz
+@enduml

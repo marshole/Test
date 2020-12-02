@@ -1,0 +1,42 @@
+
+@startuml
+
+participant schedulerJob as job
+participant schedulerService as scheduler
+participant storeService as store
+participant workService as work
+participant storeStaffService as storeStaff
+participant staffService as staff
+participant arithmeticApi as arithmetic
+
+
+note left of job
+遍历待排列表
+end note
+job -> scheduler : 执行自动排班
+    activate scheduler
+    scheduler -> store: 查询门店信息
+        activate store
+        store -> scheduler
+        deactivate store
+    scheduler -> work: 查询工作量信息
+        activate work
+        work ->  scheduler
+        deactivate work
+
+    scheduler -> storeStaff: 查询门店员工列表
+        activate storeStaff
+        storeStaff -> scheduler
+        deactivate storeStaff
+
+    scheduler -> staff: 查询员工信息
+        activate staff
+        staff -> scheduler
+        deactivate staff
+
+    scheduler -> scheduler: 封装算法入参
+
+    scheduler -> arithmetic: 调用算法
+
+deactivate scheduler
+@enduml
