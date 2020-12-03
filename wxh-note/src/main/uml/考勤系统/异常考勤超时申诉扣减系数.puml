@@ -1,0 +1,44 @@
+#超时申诉工时系数
+
+@startuml
+start
+partition 获取申诉日期原点（年月日） {
+:获取班次信息;
+if(对应的申述有排班记录)then(yes)
+:申诉日期原点 = 排班结束时间;
+else(no)
+    if(有下班打卡记录)then(yes)
+    :申诉日期原点 = 下班打卡时间;
+    else(no)
+    :申诉日期原点 = 上班班打卡时间;
+    endif
+endif
+}
+
+
+partition 获取超时申诉时间节点 {
+
+   :超时时间点 = 申诉日期原点次日10:30;
+   floating note left: 举例：如果申诉日期原点=2020-12-03\n那么超时时间点=2020-12-04 10:30
+   :截止时间点 = 超时时间点 + 3天;
+   floating note right: 举例：如果申诉日期原点=2020-12-03\n那么截止时间点=2020-12-04 10:30\n截止时间点=2020-12-07 10:30
+}
+
+partition 计算超时申诉工时系数 {
+
+    if(发起申诉时间 <= 超时时间点)then(yes)
+    :工时系数 = 1;
+    floating note left: 不够减
+    else(no)
+        if(发起申诉时间 <= 截止时间点)then(yes)
+        :工时系数 = 0.5;
+        floating note left: 扣一半
+        else(no)
+        :工时系数 = 1;
+        floating note left: 全扣减
+        endif
+    endif
+}
+
+stop
+@enduml
