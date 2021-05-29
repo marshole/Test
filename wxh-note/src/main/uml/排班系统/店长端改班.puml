@@ -5,12 +5,25 @@
 
 start
 
-:基础校验;
-:逻辑删除（修改isDelete字段）;
-:清空员工的入离店日期;
-:调整可排班字段（修改isOnShop）;
-:情况absent数据;
-:删除未来排班数据;
+:运营确认班表无误,下发虚拟成本;
+floating note right: 下发虚拟成本的同时,会生成班表log \n主要写在schedule_snap、schedule_detail_snap
+
+:店长点击编辑, 进行班表修改;
+floating note left: 1.会拿最新的班表log跟实际班表做比较 \n如果实际班表跟班表log不一致会重新生成班表log \n2.本次修改会生成草稿文件 \n存放于schedule_editing、schedule_detail_editing
+
+:店长进行班表修改,会按照人/天进行班表校验;
+floating note right: 校验分成强校验和弱校验 \n强校验会限制修改 \n弱校验会出现提示
+
+:店长修改完毕,提交修改;
+
+:校验工时下限;
+
+:通过校验，生成工作流;
+floating note right: 生成工作流后,除非工作流完结,则无法修改提交时间范围内的班次
+
+
+:流程通过,回写班表;
+floating note left: 1.校验班表，冲突班表落失败班次 \n2.流程发起过程中由于各种原因产生的失败班次均变为放弃支援 \n3.生成新的班表log
 
 stop
 

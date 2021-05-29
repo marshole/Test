@@ -1,6 +1,8 @@
 package com.wxh.note.structure.tree.binary;
 
 
+import lombok.AllArgsConstructor;
+
 import java.util.Objects;
 
 /**
@@ -8,14 +10,16 @@ import java.util.Objects;
  * @Description
  * @Date 18/7/12 下午8:53
  **/
+@AllArgsConstructor
 public class BinaryTree {
 
     private BinaryNode root;
 
 
-
     public static void main(String[] args) {
         //BinaryNode
+        BinaryTree binaryTree = new BinaryTree(BinaryTree.initBinaryTree());
+        postorderTraversal(binaryTree.root);
     }
 
 
@@ -27,15 +31,15 @@ public class BinaryTree {
      * @return com.wxh.note.structure.tree.binary.BinaryNode
      **/
     private static BinaryNode initBinaryTree(){
-        BinaryNode J = new BinaryNode(8, null, null);
-        BinaryNode H = new BinaryNode(4, null, null);
-        BinaryNode G = new BinaryNode(2, null, null);
-        BinaryNode F = new BinaryNode(7, null, J);
-        BinaryNode E = new BinaryNode(5, H, null);
-        BinaryNode D = new BinaryNode(1, null, G);
-        BinaryNode C = new BinaryNode(9, F, null);
-        BinaryNode B = new BinaryNode(3, D, E);
-        BinaryNode A = new BinaryNode(6, B, C);
+        BinaryNode J = new BinaryNode("J", null, null);
+        BinaryNode H = new BinaryNode("H", null, null);
+        BinaryNode G = new BinaryNode("G", null, null);
+        BinaryNode F = new BinaryNode("F", null, J);
+        BinaryNode E = new BinaryNode("E", H, null);
+        BinaryNode D = new BinaryNode("D", null, G);
+        BinaryNode C = new BinaryNode("C", F, null);
+        BinaryNode B = new BinaryNode("B", D, E);
+        BinaryNode A = new BinaryNode("A", B, C);
         return A;
     }
 
@@ -69,13 +73,13 @@ public class BinaryTree {
     private static void inorderTraversal(BinaryNode root){
 
         if(Objects.nonNull(root.getLeftNode())){
-            inorderTraversal(root);
+            inorderTraversal(root.getLeftNode());
         }
 
         println(root);
 
         if(Objects.nonNull(root.getRightNode())){
-            inorderTraversal(root);
+            inorderTraversal(root.getRightNode());
         }
     }
 
@@ -89,11 +93,11 @@ public class BinaryTree {
     private  static void postorderTraversal(BinaryNode root){
 
         if(Objects.nonNull(root.getLeftNode())){
-            inorderTraversal(root);
+            postorderTraversal(root.getLeftNode());
         }
 
         if(Objects.nonNull(root.getRightNode())){
-            inorderTraversal(root);
+            postorderTraversal(root.getRightNode());
         }
 
         println(root);

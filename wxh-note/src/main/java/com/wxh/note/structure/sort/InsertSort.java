@@ -23,10 +23,15 @@ public class InsertSort {
 
     /**
      * 易于理解的代码
+     *
      * @param nums
      * @return
      */
     public static int[] sortM(int[] nums) {
+
+        if (nums.length <= 1) {
+            return nums;
+        }
 
         for (int i = 1; i < nums.length; i++) {
             int temp = nums[i];
@@ -35,7 +40,7 @@ public class InsertSort {
                 if (temp < nums[j]) {
                     nums[j + 1] = nums[j];
                     lastLocal = j;
-                }else{
+                } else {
                     break;
                 }
             }
@@ -44,4 +49,34 @@ public class InsertSort {
         return nums;
     }
 
+    public static int[] test(int[] nums) {
+
+        if (nums.length <= 1) {
+            return nums;
+        }
+
+
+        for (int i = 1; i < nums.length; i++) {
+
+            int insertKey = i;
+            int insertValue = nums[insertKey];
+
+            for (int j = i - 1; j >= 0; j--) {
+
+                int compareKey = j;
+                int compareValue = nums[compareKey];
+
+                if(insertValue >= compareValue){
+                    break;
+                }
+
+                // 插到前面
+                nums[insertKey] = compareValue;
+                nums[compareKey] = insertValue;
+                insertKey = compareKey;
+            }
+
+        }
+        return nums;
+    }
 }
