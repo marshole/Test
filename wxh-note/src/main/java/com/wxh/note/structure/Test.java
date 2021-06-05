@@ -5,6 +5,7 @@ package com.wxh.note.structure;
 
 import java.util.LinkedList;
 import java.util.Stack;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author weixuhui Date: 2021/5/19 Time: 2:39 下午
@@ -34,6 +35,8 @@ public class Test {
 
 
     public static int romanToInt(String s) {
+
+        AtomicInteger
 
         int length = s.length();
 
