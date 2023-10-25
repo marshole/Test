@@ -53,10 +53,11 @@ public class ClassLoaderTest {
 
         ServiceLoader<Object> serviceLoader = ServiceLoader.load(Object.class);
 
-        Object obj = myLoader_2.loadClass("com.wxh.note.java.gc.ClassLoaderTest").newInstance();
+        Object obj = myLoader_1.loadClass("com.wxh.note.java.gc.ClassLoaderTest").newInstance();
 
         System.out.println(obj.getClass());
 
         System.out.println(obj instanceof ClassLoaderTest);
+        System.out.println(new ClassLoaderTest() instanceof ClassLoaderTest);
     }
 }
