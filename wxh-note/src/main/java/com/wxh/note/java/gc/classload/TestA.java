@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Wormpex.com. All Rights Reserved.
  */
-package com.wxh.note.java.gc.classLoaderOrderTest;
+package com.wxh.note.java.gc.classload;
 
 /**
  * @author weixuhui Date: 2021/4/20 Time: 2:06 下午

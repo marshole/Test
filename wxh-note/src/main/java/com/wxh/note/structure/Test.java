@@ -36,8 +36,6 @@ public class Test {
 
     public static int romanToInt(String s) {
 
-        AtomicInteger
-
         int length = s.length();
 
         int sum = 0;

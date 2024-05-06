@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 Wormpex.com. All Rights Reserved.
  */
-package com.wxh.note.java.gc;
+package com.wxh.note.java.gc.classload;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,7 +53,7 @@ public class ClassLoaderTest {
 
         ServiceLoader<Object> serviceLoader = ServiceLoader.load(Object.class);
 
-        Object obj = myLoader_1.loadClass("com.wxh.note.java.gc.ClassLoaderTest").newInstance();
+        Object obj = myLoader_1.loadClass("com.wxh.note.java.gc.classload.ClassLoaderTest").newInstance();
 
         System.out.println(obj.getClass());
 
